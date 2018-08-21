@@ -17,3 +17,10 @@ exports.create_note = function(req, res) {
     res.json(note);
   });
 };
+
+exports.find_note = function(req, res) {
+  Note.findById(req.params.notedId, function(err, note) {
+    if (err) res.send(err);
+    res.json(note);
+  });
+};
