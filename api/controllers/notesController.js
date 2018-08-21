@@ -37,4 +37,9 @@ exports.update_note = function(req, res) {
   );
 };
 
-
+exports.delete_note = function(req, res) {
+  Note.remove({ _id: req.params.noteId }, function(err, note) {
+    if (err) res.send(err);
+    res.json(note);
+  });
+};

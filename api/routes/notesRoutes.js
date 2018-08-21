@@ -10,5 +10,6 @@ module.exports = function(app) {
   app
     .route("/notes/:noteId")
     .get(notes.find_note)
-    .put(notes.update_note);
+    .put(notes.update_note)
+    .delete(notes.delete_note);
 };
