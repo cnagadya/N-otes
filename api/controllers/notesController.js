@@ -19,8 +19,22 @@ exports.create_note = function(req, res) {
 };
 
 exports.find_note = function(req, res) {
-  Note.findById(req.params.notedId, function(err, note) {
+  Note.findById(req.params.noteId, function(err, note) {
     if (err) res.send(err);
     res.json(note);
   });
 };
+
+exports.update_note = function(req, res) {
+  Note.findOneAndUpdate(
+    { _id: req.params.notedId },
+    req.body,
+    { new: true },
+    function(err, note) {
+      if (err) res.send(err);
+      res.json(note);
+    }
+  );
+};
+
+
